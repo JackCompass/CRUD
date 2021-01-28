@@ -70,7 +70,7 @@ def Updateuser(request, id):
 		'id' : id,
 	})
 
-	
+
 def register(request):
 	"""
 	It directs the user to register into the application without any hassle.
