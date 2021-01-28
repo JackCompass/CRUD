@@ -17,3 +17,4 @@ A simple Web application which keeps track of Users different account. Using HTM
 - Make sure to remove  these lines 'from decouple import config' and 'import os' from settings.py
 - Drop a mail on kumarnauj1303@gmail.com for the SECRET_KEY.
 - After getting SECRET_KEY replace it with the current SECRET_KEY in settings.py
+- open views.py and read the doc string of register_only_on_localhost and change the settings accordingly.
