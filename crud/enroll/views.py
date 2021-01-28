@@ -7,11 +7,11 @@ from django.contrib.auth.decorators import login_required
 
 
 def register_only_on_localhost(register):
-	""" This function bounds the registration page access only to the localhost
-		Users. Others will get 500 status code.
-		Http Status code 500 : The HyperText Transfer Protocol (HTTP) 500 Internal Server Error server error 
-		response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.
-		It can be discontinued by removing the sytactic sugar used in the register function.
+	""" 
+	This function bounds the registration page access only to the localhost Users. Others will get 500 status code.
+	Http Status code 500 : The HyperText Transfer Protocol (HTTP) 500 Internal Server Error server error 
+	response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.
+	It can be discontinued by removing the sytactic sugar used in the register function.
 	"""
 	def localhost(request):
 		if request.META.get('REMOTE_ADDR') == "127.0.0.1":
