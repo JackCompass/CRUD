@@ -1,22 +1,11 @@
 from django.shortcuts import render, reverse
+from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .forms import UserRegistration, Registration
 from .models import RegisteredAccount
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-
-def register_only_on_localhost(register):
-	""" 
-	This function bounds the registration page access only to the localhost Users. Others will get 500 status code.
-	Http Status code 500 : The HyperText Transfer Protocol (HTTP) 500 Internal Server Error server error 
-	response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.
-	It can be discontinued by removing the sytactic sugar used in the register function.
-	"""
-	def localhost(request):
-		if request.META.get('REMOTE_ADDR') == "127.0.0.1":
-			return register(request)
-	return localhost
 
 @login_required(login_url = '/accounts/login')
 def index(request):
@@ -82,7 +71,7 @@ def Updateuser(request, id):
 		'id' : id,
 	})
 
-@register_only_on_localhost
+# @register_only_on_localhost
 def register(request):
 	"""
 	It directs the user to register into the application without any hassle.
