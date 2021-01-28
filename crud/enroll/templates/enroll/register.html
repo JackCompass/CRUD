@@ -1,0 +1,13 @@
+{% extends 'enroll/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="row">
+	<div class="text-center col-sm-6 offset-3">
+		<form method="POST" action="{% url 'register' %}" class="form-group">
+			{% csrf_token %}
+			{{form|crispy}}
+			<button type="Submit" value="Submit" class="btn btn-success">Register</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

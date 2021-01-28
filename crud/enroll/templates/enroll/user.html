@@ -1,0 +1,52 @@
+{% extends 'enroll/base.html' %}
+{% block content %}
+{%if user.is_authenticated %}
+	<div class="row">
+		<div class="col-sm-4">
+			<h3 class="text-center alert alert-info">Add new users </h3>
+			<form method="POST" action="{% url 'index' %}" class="d-inline">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="Submit" class="btn btn-success" value="add">Register</button>			
+			</form>
+			<a href="{% url 'logout' %}"><button class="offset-6 btn btn-danger">Logout</button></a>
+			<p>Your IP : {{ip}}</p>
+			
+		</div>
+		<div class="col-sm-8">
+			<h3 class="text-center alert alert-info">Users Information</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Username</th>
+							<th scope="col">Email</th>
+							<th scope="col">Password</th>
+							<th scope="col">Update</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for person in accnt %}
+						<tr>
+							<td>{{person.name}}</td>
+							<td>{{person.username}}</td>
+							<td>{{person.email}}</td>
+							<td>{{person.password}}</td>
+							<td>
+								<a href="{% url 'update' person.id %}" class="btn btn-success btn-sm">Edit</a>
+								<a href="{% url 'delete' person.id %}" class="btn btn-danger btn-sm">Del</a>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+		</div>
+	</div>
+{% else %}
+<div class="row">
+	<div class="text-center col-sm-5 offset-3">
+		<button type="submit" class="btn btn-info"><a href="{% url 'login' %}">Login</a></button>
+	</div>
+</div>
+{% endif %}
+{% endblock content %}
