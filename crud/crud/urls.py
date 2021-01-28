@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from enroll import views as v
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('enroll.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', v.index, name = 'index'),
+    path('remove/<int:id>', v.remove_account, name="delete"),
+    path('update/<int:id>', v.Updateuser, name="update"),
+    path('register/', v.register, name="register"),
 ]

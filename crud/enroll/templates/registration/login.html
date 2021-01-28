@@ -1,0 +1,15 @@
+{% extends 'enroll/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="row">
+	<div class="text-center col-sm-6 offset-3">
+		<h2 class="text-center alert alert-info">Login</h2>
+		<form method="POST" action="" class="form-group">
+			{% csrf_token %}
+			{{form|crispy}}
+			<p>Don't have an account yet. Create <a href="{% url 'register' %}">Here</a></p>
+			<button type="Submit" class="btn btn-success">Login</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
