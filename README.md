@@ -15,5 +15,5 @@ A simple Web application which keeps track of Users different account. Using HTM
 
 ### How to run **CRUD** on Local Machine
 - Make sure to remove  these lines 'from decouple import config' and 'import os' from settings.py
-- Drop a mail on @kumarnauj1303@gmail.com for the SECRET_KEY.
-- After getting SECRET_KEY put replace it with the current SECRET_KEY in settings.py
+- Drop a mail on kumarnauj1303@gmail.com for the SECRET_KEY.
+- After getting SECRET_KEY replace it with the current SECRET_KEY in settings.py
