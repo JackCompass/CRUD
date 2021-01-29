@@ -14,10 +14,13 @@ class RegisterOnLocalHostMiddleware:
 		self.get_response = get_response
 		self.blocked_path = reverse_lazy(viewname = 'register')
 		self.localhost = '127.0.0.1'
-
+		
 	def __call__(self, request):
-		if request.path == self.blocked_path and request.META.get('REMOTE_ADDR') != self.localhost:
-			response = HttpResponse(status = 500)
-		else:
-			response = self.get_response(request)
+		response = self.get_response(request)
 		return response
+
+	def process_view(self, request, *args, **kwargs):
+		"""This method handles the incoming data with the request too"""
+		if request.path == self.blocked_path and request.META.get('REMOTE_ADDR') == self.localhost:
+			return HttpResponse(status = 500)
+		return None
