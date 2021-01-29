@@ -21,6 +21,6 @@ class RegisterOnLocalHostMiddleware:
 
 	def process_view(self, request, *args, **kwargs):
 		"""This method handles the incoming data with the request too"""
-		if request.path == self.blocked_path and request.META.get('REMOTE_ADDR') == self.localhost:
+		if request.path == self.blocked_path and request.META.get('REMOTE_ADDR') != self.localhost:
 			return HttpResponse(status = 500)
 		return None
