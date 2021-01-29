@@ -1,5 +1,4 @@
 from django.http import HttpResponse
-from django.urls import reverse_lazy
 
 def RegisterOnLocalHostMiddleware(get_response):
 	"""
@@ -11,9 +10,8 @@ def RegisterOnLocalHostMiddleware(get_response):
 
 	"""
 	localhost = '127.0.0.1'
-
 	def middleware(request):
-		if request.META.get('REMOTE_ADDR') == localhost:
+		if request.META.get('REMOTE_ADDR') != localhost:
 			return HttpResponse(status = 500)
 		else:
 			response = get_response(request)
