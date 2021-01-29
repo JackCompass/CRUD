@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from enroll.middleware import RegisterOnLocalHostMiddleware
 from .forms import UserRegistration, Registration
 from .models import RegisteredAccount
 from django.contrib.auth.models import User
@@ -71,7 +72,7 @@ def Updateuser(request, id):
 		'id' : id,
 	})
 
-# @register_only_on_localhost
+@RegisterOnLocalHostMiddleware
 def register(request):
 	"""
 	It directs the user to register into the application without any hassle.
